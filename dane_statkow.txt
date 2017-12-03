@@ -1,7 +1,7 @@
-skrót nazwa punkty_strukturalne osłona atak
+skrót nazwa punkty_strukturalne osłona atak.
 mt mały_transporter 400 10 5
 dt duży_transporter 1200 25 5
-lm lekki_myśliwiec 400	10 50
+lm lekki_myśliwiec 400 10 50
 cm ciężki_myśliwiec 1000 25 150
 kr krążownik 2700 50 400
 ow okręt_wojenny 6000 200 1000
