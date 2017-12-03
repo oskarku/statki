@@ -10,7 +10,7 @@ public class Flota  {
 	int flota[]=new int[14];
 	String nazwy[] = new String[14];
 	String p;
-	Statek[] folotaa = {};
+	
 	int sumastatkow=0;
 	List<Statek> flotaa = new ArrayList<Statek>();
 	
@@ -43,16 +43,16 @@ public class Flota  {
 	
 	}
 	public void tworz_flote() {
-		int nazwa=0 ;
+		String nazwo="";
 		for (int j=0;j<14;j++) {
 			if (flota[j]>0) {
 				System.out.println(j);
 				System.out.println(nazwy[j]);
 				System.out.println(flota[j]);
-				//nazwa=nazwa+j;
 				for(int k=0;k<flota[j];k++) {
 					//System.out.println(nazwy[j]);
-					flotaa.add(new Statek(nazwy[j]));	
+					nazwo=nazwo+nazwy[j];
+					flotaa.add(new Statek(nazwo));	
 				}
 			}
 		}	
