@@ -23,6 +23,11 @@ public class DaneStatkow {
 	
 	
 static double dane[];
+
+
+public DaneStatkow() {
+	this.odczytajPlik();
+}
 	
 
 
@@ -69,7 +74,8 @@ static double dane[];
 	        } catch (FileNotFoundException e) {
 	            System.out.println("Brak Pliku do odczytania!");
 	        }
-	    }
+	  }
+	    
 	  
 
 

@@ -31,31 +31,32 @@ public class Statek {
 		}
 		
 	boolean sprawdz_czy_zniszcony() {
-		if (this.punkty_strukturalne<=0.0)return false;
-		return true;
+		if (this.punkty_strukturalne<=0.0)return true;
+		return false;
 	}
 	boolean strzel(Statek obj) {
-		if (1-1/sprawdz_szybkiedziala(obj)>0.0   ) {
-			this.atak=atak-obj.oslona;
+		Random random = new Random();
+		double szansa= 1-1/sprawdz_szybkiedziala(obj);
+		double gszans=random.nextDouble();
+		System.out.println("Wspuczynnik pecha jest "+(gszans-szansa)+" od szansy normalnej"+szansa);
+		if (gszans<=szansa && szansa>0.0 && (this.atak > (1/100)*obj.oslona)  ) {
+			this.atak=this.atak-obj.oslona;
 			return true;
 			}
-		if(atak< (1/100)*obj.oslona) {
-		return false; }
-		return true;
+		else return false; }
 		
-	}
 	
 	
 	void trafiony(Statek obj) {
-		this.punkty_strukturalne=punkty_strukturalne-obj.atak;
 		double szansa_wybuchu;
 		double prog = (70/100)*DaneStatkow.punkty_strukturalne[typ];
-		if(obj.atak>oslona)oslona=0.0;
-		oslona=oslona-obj.atak;
-		if (punkty_strukturalne<prog) {
-			szansa_wybuchu=1-(punkty_strukturalne/DaneStatkow.punkty_strukturalne[typ]);
-			Random random = new Random();
-			if(random.nextDouble()==szansa_wybuchu)punkty_strukturalne=0.0;
+		Random random = new Random();
+		this.punkty_strukturalne=this.punkty_strukturalne-obj.atak;
+		this.oslona=this.oslona-obj.atak;
+		if(obj.atak>this.oslona)this.oslona=0.0;
+		if (this.punkty_strukturalne<prog) {
+			szansa_wybuchu=1-(this.punkty_strukturalne/DaneStatkow.punkty_strukturalne[this.typ]);
+			if(random.nextDouble()==szansa_wybuchu)this.punkty_strukturalne=0.0;
 			
 		}
 			
@@ -69,7 +70,6 @@ public class Statek {
 	}
 	
 	double sprawdz_szybkiedziala(Statek obj) {
-		System.out.println(DaneStatkow.szybkie_dziala[typ][obj.typ]);
 		return DaneStatkow.szybkie_dziala[typ][obj.typ];
 	}
 

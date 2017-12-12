@@ -3,7 +3,7 @@ mt 0
 dt 0
 lm 0
 cm 0
-kr 40
+kr 1
 ow 0
 sk 0
 re 0

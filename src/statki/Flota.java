@@ -5,17 +5,18 @@ import java.lang.*;
 
 
 public class Flota  {
+	String NazwaFloty;
 	String pliko[]=new String[14];
 	String konw[][]=new String[14][2];
 	int flota[]=new int[14];
 	String nazwy[] = new String[14];
 	String p;
-	
 	int sumastatkow=0;
-	List<Statek> flotaa = new ArrayList<Statek>();
+	ArrayList<Statek> flotaa= new ArrayList<Statek>();
 	
 	
-	Flota(String plik) {
+	public Flota(String plik, String Nazwa) {
+		this.NazwaFloty=Nazwa;
 		p=plik;
     
 		try {
@@ -34,6 +35,7 @@ public class Flota  {
 			for(int x : flota) {
 				sumastatkow=sumastatkow+x;
 			}
+			this.tworz_flote();
 			
 		}
  
@@ -43,22 +45,55 @@ public class Flota  {
 	
 	}
 	public void tworz_flote() {
-		String nazwo="";
 		for (int j=0;j<14;j++) {
 			if (flota[j]>0) {
-				System.out.println(j);
-				System.out.println(nazwy[j]);
-				System.out.println(flota[j]);
 				for(int k=0;k<flota[j];k++) {
-					//System.out.println(nazwy[j]);
-					nazwo=nazwo+nazwy[j];
-					flotaa.add(new Statek(nazwo));	
+					flotaa.add(new Statek(nazwy[j]));	
+					
 				}
+				System.out.println("W "+this.NazwaFloty+" jest :"+flota[j]+" "+DaneStatkow.nazwy[j]);
 			}
 		}	
 	}
 	public void usun_statki() {
+		for (Statek it : flotaa)
+		{
+			if(it.sprawdz_czy_zniszcony()) flotaa.remove(it);
+		}
 		
+		
+	}
+	
+	public void wybierz_cel(Flota obj) {
+		int wielkoscObcejFloty= obj.flotaa.size();
+		Random generator = new Random();
+		int cel;
+		
+		for (Statek it : flotaa) {
+		cel = generator.nextInt(wielkoscObcejFloty);
+		System.out.println("Jestem statkiem z "+this.NazwaFloty+"o typie : "+ it.nazwa+"i strzelam do "+obj.NazwaFloty+" ich statek to : "+obj.flotaa.get(cel).nazwa);
+		System.out.println("To sa szybkie dziala dla  "+it.nazwa+"  preciwko  "+ obj.flotaa.get(cel).nazwa+": " +it.sprawdz_szybkiedziala(obj.flotaa.get(cel)));
+			while(it.strzel(obj.flotaa.get(cel))) {			
+				System.out.println("Wlasnie strzelilem"+obj.flotaa.get(cel).nazwa);
+				obj.flotaa.get(cel).trafiony(it);
+				obj.flotaa.get(cel).statystyki();
+			}
+		System.out.println("Statek z "+this.NazwaFloty+"o typie : "+ it.nazwa+" zakonczyl strzelanie do "+obj.NazwaFloty+" a konkretnie do statku  : "+obj.flotaa.get(cel).nazwa);
+		
+		}
+	}
+		
+	
+	public int[] aktualny_stan() {
+		int[] wyjscie = new int[14];
+		for (Statek it:flotaa) {
+			wyjscie[it.typ]++;
+			
+		}
+		for(int l : wyjscie ) {
+			System.out.println("Flota ma :"+wyjscie[l]+"  "+DaneStatkow.nazwy[l]);
+		}
+		return wyjscie;
 		
 	}
 	
@@ -66,7 +101,7 @@ public class Flota  {
 
 
 
-
+	
 }
 
     

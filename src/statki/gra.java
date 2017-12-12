@@ -8,28 +8,35 @@ import java.util.List;
 public class gra {
 
 	public static void main(String[] args) {
-		Statek lolo[]= new Statek[4];
 		DaneStatkow lol;
-		lol = new DaneStatkow();
-		lol.odczytajPlik();
-		System.out.println(lol.podzial[1][0]);
-		System.out.println(DaneStatkow.szybkie_dziala[0][0]);
-		Statek s1, s2;
-		s1= new Statek("kr");
-		s2= new Statek("lm");
-		s1.sprawdz_szybkiedziala(s2);
-		Flota s4;
-		s4= new Flota("flota_1.txt");
-		//System.out.print(s4);
+		lol= new DaneStatkow();
+		Flota s1, s2;
+		s1 = new Flota("flota_1.txt","Flota gracza nr 1");
+		s2 = new Flota("flota_2.txt", "Flota gracza nr 2");
+		/*s1.flotaa.get(0).statystyki();
+		s2.flotaa.get(0).statystyki();
+		s2.flotaa.get(0).strzel(s1.flotaa.get(0));
+		s1.flotaa.get(0).trafiony(s2.flotaa.get(0));
+		System.out.println(" Po walce");
+		s1.flotaa.get(0).statystyki();
+		s2.flotaa.get(0).statystyki();*/
+		//s1.wybierz_cel(s2);
+		//s2.wybierz_cel(s1);
 		
-
-		s4.tworz_flote();
-		System.out.println(s4.flotaa.get(2).nazwa);
+		for (int i=0; i<6; i++) {
+			if(s1.flotaa.size()>=0 && s2.flotaa.size()>=0) {
+			s1.wybierz_cel(s2);
+			s2.usun_statki();
+			s2.wybierz_cel(s1);
+			s1.usun_statki();}
+			break;
+		}
+		if (s1.flotaa.size()>s2.flotaa.size())System.out.print("wygrala flota: "+s1.NazwaFloty);
+		else if (s2.flotaa.size()>s1.flotaa.size())System.out.println("wygrala flota: "+s2.NazwaFloty);
+		else System.out.println("jest remis");
 		
-		//System.out.println(s2.nazwa);
-		//lolo[0].sprawdz_szybkiedziala(s1);
-		//System.out.println(s4.flota[2]);
-		//System.out.println(lol.nazwy[2]);
+		
+		
 		
 		
 	}
