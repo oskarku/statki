@@ -25,11 +25,12 @@ public class gra {
 		
 		for (int i=0; i<6; i++) {
 			System.out.println(s1.flotaa.size()+" "+s2.flotaa.size());
-			if(!s1.flotaa.isEmpty() && !s2.flotaa.isEmpty()) {
+			if(s1.flotaa.size()>0 && s2.flotaa.size()>0) {
 			s1.wybierz_cel(s2);
 			if(!s2.flotaa.isEmpty())s2.usun_statki();
 			s2.wybierz_cel(s1);
 			if(!s1.flotaa.isEmpty())s1.usun_statki();}
+			break;
 		}
 		if (s1.flotaa.size()>s2.flotaa.size())System.out.print("wygrala flota: "+s1.NazwaFloty);
 		else if (s2.flotaa.size()>s1.flotaa.size())System.out.println("wygrala flota: "+s2.NazwaFloty);

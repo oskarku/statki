@@ -1,12 +1,12 @@
 skrót ilość
 mt 0
 dt 0
-lm 1
+lm 10
 cm 0
 kr 0
 ow 0
-sk 0
-re 0
+sk 100
+re 500
 ss 0
 b 0
 n 0
