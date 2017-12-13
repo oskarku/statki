@@ -58,7 +58,12 @@ public class Flota  {
 	public void usun_statki() {
 		for (Statek it : flotaa)
 		{
-			if(it.sprawdz_czy_zniszcony()) flotaa.remove(it);
+			if(it.sprawdz_czy_zniszcony()) {
+				System.out.println("wlasnie usunolem statek ");
+				if(!flotaa.isEmpty())flotaa.remove(it);
+				else this.flotaa= new ArrayList<Statek>();
+				System.out.println("Zobacz na rozmiar:"+ flotaa.size());
+			}
 		}
 		
 		
