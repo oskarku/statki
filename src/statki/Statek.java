@@ -38,7 +38,7 @@ public class Statek {
 		Random random = new Random();
 		double szansa= 1-1/sprawdz_szybkiedziala(obj);
 		double gszans=random.nextDouble();
-		System.out.println("Wspuczynnik pecha jest "+(gszans-szansa)+" od szansy normalnej"+szansa);
+		//System.out.println("Wspuczynnik pecha jest "+(gszans-szansa)+" od szansy normalnej"+szansa);
 		if (gszans<=szansa && szansa>0.0 && (this.atak > (1/100)*obj.oslona)  ) {
 			this.atak=this.atak-obj.oslona;
 			return true;
