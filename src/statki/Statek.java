@@ -1,7 +1,12 @@
 package statki;
 import java.util.Arrays;
 import java.util.Random;
-public class Statek extends gra {
+/**
+ * @author Oskar Kufel
+ * Klasa statek zawiera metody potrzebne do tego zeby statki sie mogly atakowacitp
+ *
+ */
+public class Statek  {
 	int typ;
 	String nazwa;
 	double atak;
@@ -40,7 +45,7 @@ public class Statek extends gra {
 		double gszans=random.nextDouble();
 		String napis="\n \n Wspuczynnik pecha jest "+(gszans-szansa)+" od szansy normalnej"+szansa+"\n \n";
 		//gra.drukuj(napis);
-		if (gszans<=szansa && szansa>0.0 && (this.atak > (1/100)*obj.oslona)  ) {
+		if (gszans<szansa  && (this.atak > (1/100)*obj.oslona)  ) {
 			this.atak=this.atak-obj.oslona;
 			return true;
 			}
@@ -62,11 +67,13 @@ public class Statek extends gra {
 		}
 			
 	}
-	void statystyki() {
-		System.out.println(this.nazwa);
-		System.out.println("Tyle mam punktow ataku: "+this.atak);
-		System.out.println("Tyle mam punktow oslony: "+this.oslona);
-		System.out.println("Tyle mam punktow struk."+this.punkty_strukturalne);
+	String[] statystyki() {
+		String [] wynik = new String [4];
+		wynik[0]= this.nazwa;
+		wynik[1]="Tyle mam punktow ataku: "+this.atak;
+		wynik[2]="Tyle mam punktow oslony: "+this.oslona;
+		wynik[3]="Tyle mam punktow struk."+this.punkty_strukturalne;
+		return wynik;
 		
 	}
 	

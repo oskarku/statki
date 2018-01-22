@@ -6,6 +6,14 @@ import java.lang.String;
 import java.lang.Double;
 
  
+
+/**
+ * @author Oskar
+ * Klasa dane statow zawiera dabe o statkach 
+ * jest w niej w sumie jedna metoda odczytaj plik i tyle.
+ * Klasa sluzy tylko do wydobycia informacji o statkach
+ *
+ */
 public class DaneStatkow {
 	String pliko = "dane_statkow.txt";
 	String plik2= "szybkie_dziala.txt";
@@ -20,9 +28,7 @@ public class DaneStatkow {
 	static double punkty_strukturalne[]=new double[14];
 	static double oslona[]=new double[14];
 	static double szybkie_dziala[][]= new double[14][14];
-	
-	
-static double dane[];
+	static double dane[];
 
 
 public DaneStatkow() {
@@ -32,7 +38,10 @@ public DaneStatkow() {
 
 
 
-	  public void odczytajPlik() {
+	  /**
+	 * Metoda ta pobiera info z plikow i wylapuje nawet wyjatek jesli nie znajduje plku 
+	 */
+	public void odczytajPlik() {
 		  File szybkied= new File(this.plik2);
 	        File plikDane = new File(this.pliko);
 	        this.tablica = new String[14];
