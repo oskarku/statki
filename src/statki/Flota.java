@@ -49,7 +49,8 @@ public class Flota  {
 		}
  
 		catch (FileNotFoundException e) {
-			System.out.println("Brak Pliku do odczytania! /n podaj nowy plik :");  }
+			interfejs.drukuj("blad ");
+		}
 	}
 		public Flota(String Nazwa, String mt, String dt, String lm, String cm, String kr, String ow, String sk, String re, String ss, String b, String n, String gs, String p  ) {
 		this.NazwaFloty=Nazwa;
@@ -78,7 +79,7 @@ public class Flota  {
 					flotaa.add(new Statek(DaneStatkow.skroty[j]));	
 					
 				}
-				System.out.println("W "+this.NazwaFloty+" jest :"+flota[j]+" "+DaneStatkow.nazwy[j]);
+				//System.out.println("W "+this.NazwaFloty+" jest :"+flota[j]+" "+DaneStatkow.nazwy[j]);
 			}
 		}	
 	}

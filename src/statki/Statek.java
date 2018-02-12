@@ -44,7 +44,6 @@ public class Statek  {
 		double szansa= 1-1/sprawdz_szybkiedziala(obj);
 		double gszans=random.nextDouble();
 		String napis="\n \n Wspuczynnik pecha jest "+(gszans-szansa)+" od szansy normalnej"+szansa+"\n \n";
-		//gra.drukuj(napis);
 		if (gszans<szansa  && (this.atak > (1/100)*obj.oslona)  ) {
 			this.atak=this.atak-obj.oslona;
 			return true;
